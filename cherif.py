@@ -25,7 +25,7 @@ with col1:
     plt.xlabel("product_id")
     plt.ylabel("Âge moyen")
     plt.title("Distribution de l'âge moyen en fonction des product_id")
-    st.pyplot(fig)
+    st.pyplot(fig,width=200)
 
 # Histogramme avec Plotly
 with col2:
@@ -36,7 +36,7 @@ fcol1, fcol2 = st.columns(2)
 with fcol1:
     st.title("Histogramme avec Plotly")
     fig = px.histogram(fusion, x="gender", y="price")
-    st.plotly_chart(fig, width=200)
+    st.plotly_chart(fig, width=400)
 
 with fcol2:
     # Calcul du chiffre d'affaires
@@ -45,4 +45,4 @@ with fcol2:
 
 st.title("Histogramme avec Plotly")
 fig = px.bar(fusion, x="product_id" , y="age")
-st.plotly_chart(fig, width=0.00001)
+st.plotly_chart(fig, width=400)
