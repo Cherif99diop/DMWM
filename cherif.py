@@ -19,6 +19,11 @@ st.title("Dashboard avec Streamlit et Plotly")
 st.subheader("Données fusionnées")
 
 # Créer deux colonnes pour afficher les graphiques
+
+# Calcul du chiffre d'affaires
+
+chiffre_affaires = df['price'].sum()
+st.write(f"<span style='color:red; font-size:40px;'>Chiffre d'affaires : {chiffre_affaires} € </span>", unsafe_allow_html=True)
 # Box plot de l'âge moyen en fonction des product_id
 
 st.subheader("Box plot de l'âge moyen en fonction des product_id")
@@ -39,10 +44,6 @@ st.title("Histogramme avec Plotly")
 fig = px.histogram(fusion, x="gender", y="price")
 st.plotly_chart(fig, width=400)
 
-# Calcul du chiffre d'affaires
-
-chiffre_affaires = df['price'].sum()
-st.write(f"<span style='color:red; font-size:40px;'>Chiffre d'affaires : {chiffre_affaires} € </span>", unsafe_allow_html=True)
 
 st.title("Histogramme avec Plotly")
 fig = px.bar(fusion, x="product_id" , y="age")
