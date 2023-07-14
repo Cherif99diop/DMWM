@@ -13,17 +13,17 @@ merged_data = pd.merge(clics, impressions, on="cookie_id", how="right")
 merged_data = pd.merge(merged_data, achats, on="cookie_id",how="left")
 merged_dat = merged_data.fillna("-")
 merged_data = merged_dat.replace("-",pd.NA)
-df = pd.DataFrame(merged_data)
+fusion = pd.DataFrame(merged_data)
 
 st.title("Dashboard avec Streamlit et Plotly")
-st.subheader("Données dfnées")
+st.subheader("Données fusionnées")
 # Créer deux colonnes pour afficher les graphiques
 col1, col2 = st.columns(2)
 # Box plot de l'âge moyen en fonction des product_id
 with col1:
     st.subheader("Box plot de l'âge moyen en fonction des product_id")
     fig = plt.figure(figsize=(10, 6))
-    sns.boxplot(x="product_id", y="age", data=df)
+    sns.boxplot(x="product_id", y="age", data=fusion)
     plt.xlabel("product_id")
     plt.ylabel("Âge moyen")
     plt.title("Distribution de l'âge moyen en fonction des product_id")
@@ -32,19 +32,19 @@ with col1:
 # Histogramme avec Plotly
 with col2:
     st.title("Histogramme avec Plotly")
-    fig1 = px.histogram(df, x="campaign_id", y="price")
+    fig1 = px.histogram(fusion, x="campaign_id", y="price")
     st.plotly_chart(fig1)
 
 # Entonnoir
     # Conversion des variables en date
-    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s')
-    df['timestamp_x'] = pd.to_datetime(df['timestamp_x'], unit='s')
-    df['timestamp_y'] = pd.to_datetime(df['timestamp_y'], unit='s')
+    fusion['timestamp'] = pd.to_datetime(fusion['timestamp'], unit='s')
+    fusion['timestamp_x'] = pd.to_datetime(fusion['timestamp_x'], unit='s')
+    fusion['timestamp_y'] = pd.to_datetime(fusion['timestamp_y'], unit='s')
 
     # Calcul des statistiques
-    nb_impressions = df['timestamp'].count()
-    nb_clics = df['timestamp_x'].count()
-    nb_achats = df['timestamp_y'].count()
+    nb_impressions = fusion['timestamp'].count()
+    nb_clics = fusion['timestamp_x'].count()
+    nb_achats = fusion['timestamp_y'].count()
 
     # Création du diagramme en entonnoir
 
