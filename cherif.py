@@ -40,6 +40,7 @@ with fcol1:
     st.plotly_chart(fig)
 
 with fcol2:
-    st.title("Histogramme avec Plotly")
-    fig5 = px.pie(fusion, x="gender", y="price")
-    st.plotly_chart(fig5)
+    # Calcul du chiffre d'affaires
+    chiffre_affaires = df['price'].sum()
+    st.write(f"<span style='color:red; font-size:40px;'>Chiffre d'affaires : {chiffre_affaires} € </span>", unsafe_allow_html=True)
+
