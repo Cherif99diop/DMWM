@@ -16,14 +16,14 @@ merged_data = merged_dat.replace("-",pd.NA)
 df = pd.DataFrame(merged_data)
 
 st.title("Dashboard avec Streamlit et Plotly")
-st.subheader("Données fusionnées")
+st.subheader("Données dfnées")
 # Créer deux colonnes pour afficher les graphiques
 col1, col2 = st.columns(2)
 # Box plot de l'âge moyen en fonction des product_id
 with col1:
     st.subheader("Box plot de l'âge moyen en fonction des product_id")
     fig = plt.figure(figsize=(10, 6))
-    sns.boxplot(x="product_id", y="age", data=fusion)
+    sns.boxplot(x="product_id", y="age", data=df)
     plt.xlabel("product_id")
     plt.ylabel("Âge moyen")
     plt.title("Distribution de l'âge moyen en fonction des product_id")
@@ -32,7 +32,7 @@ with col1:
 # Histogramme avec Plotly
 with col2:
     st.title("Histogramme avec Plotly")
-    fig1 = px.histogram(fusion, x="campaign_id", y="price")
+    fig1 = px.histogram(df, x="campaign_id", y="price")
     st.plotly_chart(fig1)
 
 # Entonnoir
