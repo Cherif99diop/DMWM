@@ -18,8 +18,8 @@ achats = pd.read_csv('achats.csv')
 impr_clic = pd.merge(impressions,clics, on ='cookie_id')
 fusion = pd.merge(impr_clic, achats, on ='cookie_id')
 fusion
-    data = st.write(fusion)
-    df = pd.DataFrame(data)
+data = st.write(fusion)
+df = pd.DataFrame(data)
 
 # Afficher les données dans le dashboard
 
