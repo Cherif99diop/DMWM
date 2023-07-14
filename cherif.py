@@ -1,25 +1,3 @@
-from fastapi import FastAPI
-from fastapi.responses import JSONResponse
-import pandas as pd
-
-app = FastAPI()
-
-# Charger les données et les fusionner
-clics = pd.read_csv("clics.csv")
-impressions = pd.read_csv("impressions.csv")
-achats = pd.read_csv("achats.csv")
-
-merged_data = pd.merge(clics, impressions, on="cookie_id", how="right")
-merged_data = pd.merge(merged_data, achats, on="cookie_id",how="left")
-
-merged_data=merged_data.fillna("-")
-
-
-@app.get("/CHEIKH_DMWM/data")
-async def get_data():
-    return merged_data.to_dict(orient="records")
-
-
 import streamlit as st
 import requests
 import pandas as pd
@@ -36,14 +14,18 @@ url_api = "http://127.0.0.1:8000/CHEIKH_DMWM/data"
 
 
 # Fonction pour appeler l'API et obtenir les données
-def get_data_from_api():
-    response = requests.get(url_api)
-    return pd.DataFrame(response.json())
+impressions = pd.read_csv('impressions.csv')
+clics = pd.read_csv('clics.csv')
+achats = pd.read_csv('achats.csv')
+
+impr_clic = pd.merge(impressions,clics, on ='cookie_id')
+fusion = pd.merge(impr_clic, achats, on ='cookie_id')
+fusion
 
 # Afficher le bouton dans le dashboard
 if st.button('Charger  les données'):
     # Appeler la fonction pour obtenir les données de l'API
-    data = get_data_from_api()
+    data = st.write(fusion)
 
 # Afficher les données dans le dashboard
 if data is not None:
