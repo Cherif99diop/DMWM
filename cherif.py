@@ -44,5 +44,5 @@ with fcol2:
     st.write(f"<span style='color:red; font-size:40px;'>Chiffre d'affaires : {chiffre_affaires} € </span>", unsafe_allow_html=True)
 
 st.title("Histogramme avec Plotly")
-fig = px.bar(fusion, x="age", y="product_id")
+fig = px.bar(fusion, x="product_id" , y="age")
 st.plotly_chart(fig, width=0.00001)
