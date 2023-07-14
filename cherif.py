@@ -37,7 +37,7 @@ fcol1, fcol2 = st.columns(2)
 with fcol1:
     st.title("Histogramme avec Plotly")
     fig = px.histogram(fusion, x="gender", y="price")
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, width=200)
 
 with fcol2:
     # Calcul du chiffre d'affaires
