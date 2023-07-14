@@ -29,7 +29,7 @@ st.write(f"<span style='color:red; font-size:40px;'>Chiffre d'affaires : {chiffr
 
 ## Box plot
 fig_col1, fig_col2 = st.columns(2)
-    with fig_col1:
+with fig_col1:
         fig = px.box(df, x='product_id', y='age')
         fig.update_layout(
             xaxis_title='Produits',
@@ -37,12 +37,8 @@ fig_col1, fig_col2 = st.columns(2)
             title="Relation entre l'âge et les produits")
         st.plotly_chart(fig)
 
-# Les ventes en fonctions des campagnes
-# Grouper les données par campagne et calculer les ventes
- sales_data = df.groupby('campaign_id')['price'].sum().reset_index()
-
 # Création du diagramme des ventes en fonction des campagnes
-fig = px.bar(sales_data, x='campaign_id', y='price', title='Diagramme des ventes en fonction des campagnes')
+fig = px.bar(fusion, x='campaign_id', y='price', title='Diagramme des ventes en fonction des campagnes')
 
 # Affichage du diagramme dans Streamlit
 st.plotly_chart(fig)
@@ -58,7 +54,7 @@ nb_clics = df['timestamp_x'].count()
 nb_achats = df['timestamp_y'].count()
 
 # Création du diagramme en entonnoir
-    with fig_col2:
+with fig_col2:
     fig2 = go.Figure(
     go.Funnel(
                 y=['Impressions', 'Clics', 'Achats'],
