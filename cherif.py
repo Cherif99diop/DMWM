@@ -25,13 +25,13 @@ with col1:
     plt.xlabel("product_id")
     plt.ylabel("Âge moyen")
     plt.title("Distribution de l'âge moyen en fonction des product_id")
-    st.pyplot(fig,width=200)
+    st.pyplot(fig)
 
 # Histogramme avec Plotly
 with col2:
     st.title("Histogramme avec Plotly")
     fig1 = px.histogram(fusion, x="campaign_id", y="price")
-    st.plotly_chart(fig1)
+    st.plotly_chart(fig1,width=400)
 fcol1, fcol2 = st.columns(2)  
 with fcol1:
     st.title("Histogramme avec Plotly")
