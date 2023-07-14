@@ -35,7 +35,7 @@ with col2:
 fcol1, fcol2 = st.columns(2)  
 with fcol1:
     st.title("Histogramme avec Plotly")
-    fig = px.bar(fusion, x="age", y="product_id")
+    fig = px.histogram(fusion, x="gender", y="price")
     st.plotly_chart(fig, width=200)
 
 with fcol2:
@@ -43,4 +43,6 @@ with fcol2:
     chiffre_affaires = df['price'].sum()
     st.write(f"<span style='color:red; font-size:40px;'>Chiffre d'affaires : {chiffre_affaires} € </span>", unsafe_allow_html=True)
 
-    
+st.title("Histogramme avec Plotly")
+fig = px.bar(fusion, x="age", y="product_id")
+st.plotly_chart(fig, width=0.00001)
