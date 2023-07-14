@@ -18,10 +18,6 @@ achats = pd.read_csv('achats.csv')
 impr_clic = pd.merge(impressions,clics, on ='cookie_id')
 fusion = pd.merge(impr_clic, achats, on ='cookie_id')
 fusion
-
-# Afficher le bouton dans le dashboard
-st.button('Charger  les données'):
-    # Appeler la fonction pour obtenir les données de l'API
     data = st.write(fusion)
     df = pd.DataFrame(data)
 
