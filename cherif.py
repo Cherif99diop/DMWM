@@ -33,7 +33,13 @@ with col2:
     st.title("Histogramme avec Plotly")
     fig1 = px.histogram(fusion, x="campaign_id", y="price")
     st.plotly_chart(fig1)
-    
+  fcol1, fcol2 = st.columns(2)  
+with fcol1:
     st.title("Histogramme avec Plotly")
     fig = px.histogram(fusion, x="gender", y="price")
     st.plotly_chart(fig)
+
+with fcol2:
+    fig4=px.pie(fusion, x="gender", y="product_id")
+    fig4.updae_layout(xaxis_title="gender",yaxis_title="products", title="produit acheté selon le sexe")
+    st.plotly_chart(fig4)
