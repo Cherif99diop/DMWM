@@ -34,5 +34,5 @@ with col2:
     fig1 = px.histogram(fusion, x="campaign_id", y="price")
     st.plotly_chart(fig1)
 
-fig = go.Figure(data=fusion.Pie(labels=data['Sexe'], values=data['dept']))
+fig = go.Figure(fusion.Pie(labels=fusion['Sexe'], values=fusion['dept']))
 st.plotly_chart(fig)
