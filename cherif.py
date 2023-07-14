@@ -43,3 +43,22 @@ with fcol2:
     chiffre_affaires = df['price'].sum()
     st.write(f"<span style='color:red; font-size:40px;'>Chiffre d'affaires : {chiffre_affaires} € </span>", unsafe_allow_html=True)
 
+# Entonnoir
+# Conversion des variables en date
+df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s')
+df['timestamp_x'] = pd.to_datetime(df['timestamp_x'], unit='s')
+df['timestamp_y'] = pd.to_datetime(df['timestamp_y'], unit='s')
+
+ # Calcul des statistiques
+nb_impressions = df['timestamp'].count()
+nb_clics = df['timestamp_x'].count()
+nb_achats = df['timestamp_y'].count()
+
+# Création du diagramme en entonnoir
+
+fig2 = go.Figure(
+            go.Funnel(
+                y=['Impressions', 'Clics', 'Achats'],
+                x=[nb_impressions, nb_clics, nb_achats]
+            )
+        )
