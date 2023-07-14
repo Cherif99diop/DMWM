@@ -34,31 +34,29 @@ with col2:
     st.plotly_chart(fig1)
 fcol1, fcol2 = st.columns(2)  
 with fcol1:
-    st.title("Histogramme avec Plotly")
-    fig = px.histogram(fusion, x="gender", y="price")
-    st.plotly_chart(fig, width=200)
+    # Entonnoir
+    # Conversion des variables en date
+    fusion['timestamp'] = pd.to_datetime(fusion['timestamp'], unit='s')
+    fusion['timestamp_x'] = pd.to_datetime(fusion['timestamp_x'], unit='s')
+    fusion['timestamp_y'] = pd.to_datetime(fusion['timestamp_y'], unit='s')
+    
+     # Calcul des statistiques
+    nb_impressions = fusion['timestamp'].count()
+    nb_clics = fusion['timestamp_x'].count()
+    nb_achats = fusion['timestamp_y'].count()
+    
+    # Création du diagramme en entonnoir
+    
+    fig2 = go.Figure(
+                go.Funnel(
+                    y=['Impressions', 'Clics', 'Achats'],
+                    x=[nb_impressions, nb_clics, nb_achats]
+                )
+            )
 
 with fcol2:
     # Calcul du chiffre d'affaires
     chiffre_affaires = df['price'].sum()
     st.write(f"<span style='color:red; font-size:40px;'>Chiffre d'affaires : {chiffre_affaires} € </span>", unsafe_allow_html=True)
 
-# Entonnoir
-# Conversion des variables en date
-fusion['timestamp'] = pd.to_datetime(fusion['timestamp'], unit='s')
-fusion['timestamp_x'] = pd.to_datetime(fusion['timestamp_x'], unit='s')
-fusion['timestamp_y'] = pd.to_datetime(fusion['timestamp_y'], unit='s')
-
- # Calcul des statistiques
-nb_impressions = fusion['timestamp'].count()
-nb_clics = fusion['timestamp_x'].count()
-nb_achats = fusion['timestamp_y'].count()
-
-# Création du diagramme en entonnoir
-
-fig2 = go.Figure(
-            go.Funnel(
-                y=['Impressions', 'Clics', 'Achats'],
-                x=[nb_impressions, nb_clics, nb_achats]
-            )
-        )
+    
