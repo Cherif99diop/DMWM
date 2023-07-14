@@ -9,10 +9,10 @@ impressions = pd.read_csv('impressions.csv')
 clics = pd.read_csv('clics.csv')
 achats = pd.read_csv('achats.csv')
 
-impr_clic = pd.merge(impressions,clics, on ='cookie_id')
-fusion = pd.merge(impr_clic, achats, on ='cookie_id')
-fusion
-df = pd.DataFrame(fusion)
+merged_data = pd.merge(clics, impressions, on="cookie_id", how="right")
+merged_data = pd.merge(merged_data, achats, on="cookie_id",how="left")
+merged_data
+df = pd.DataFrame(merged_data)
 
 st.title("Dashboard avec Streamlit et Plotly")
 st.subheader("Données fusionnées")
