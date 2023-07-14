@@ -45,14 +45,14 @@ with fcol2:
 
 # Entonnoir
 # Conversion des variables en date
-df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s')
-df['timestamp_x'] = pd.to_datetime(df['timestamp_x'], unit='s')
-df['timestamp_y'] = pd.to_datetime(df['timestamp_y'], unit='s')
+fusion['timestamp'] = pd.to_datetime(fusion['timestamp'], unit='s')
+fusion['timestamp_x'] = pd.to_datetime(fusion['timestamp_x'], unit='s')
+fusion['timestamp_y'] = pd.to_datetime(fusion['timestamp_y'], unit='s')
 
  # Calcul des statistiques
-nb_impressions = df['timestamp'].count()
-nb_clics = df['timestamp_x'].count()
-nb_achats = df['timestamp_y'].count()
+nb_impressions = fusion['timestamp'].count()
+nb_clics = fusion['timestamp_x'].count()
+nb_achats = fusion['timestamp_y'].count()
 
 # Création du diagramme en entonnoir
 
