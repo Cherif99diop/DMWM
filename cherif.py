@@ -40,6 +40,6 @@ with fcol1:
     st.plotly_chart(fig)
 
 with fcol2:
-    fig4=px.pie(fusion, x="gender", y="product_id")
+    fig4=px.pie(fusion, x="gender", y="campagn_id")
     fig4.updae_layout(xaxis_title="gender",yaxis_title="products", title="produit acheté selon le sexe")
     st.plotly_chart(fig4)
