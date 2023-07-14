@@ -34,29 +34,5 @@ with col2:
     fig1 = px.histogram(fusion, x="campaign_id", y="price")
     st.plotly_chart(fig1)
 
-# Entonnoir
-    # Conversion des variables en date
-    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s')
-    df['timestamp_x'] = pd.to_datetime(df['timestamp_x'], unit='s')
-    df['timestamp_y'] = pd.to_datetime(df['timestamp_y'], unit='s')
-
-    # Calcul des statistiques
-    nb_impressions = df['timestamp'].count()
-    nb_clics = df['timestamp_x'].count()
-    nb_achats = df['timestamp_y'].count()
-
-    # Création du diagramme en entonnoir
-
-    fig2 = go.Figure(
-            go.Funnel(
-                y=['Impressions', 'Clics', 'Achats'],
-                x=[nb_impressions, nb_clics, nb_achats]
-            )
-        )
-
-    # Affichage du diagramme dans Streamlit
-    fig2.update_layout(title="Diagramme en entonnoir")
-    st.plotly_chart(fig2)
-
-
-
+fig = go.Figure(data=fusion.Pie(labels=data['Sexe'], values=data['dept']))
+    st.plotly_chart(fig)
