@@ -9,7 +9,7 @@ impressions = pd.read_csv('impressions.csv')
 clics = pd.read_csv('clics.csv')
 achats = pd.read_csv('achats.csv')
 impr_clic = pd.merge(clics, impressions, on="cookie_id", how="right")
-fusion  = pd.merge(merged_data, achats, on="cookie_id",how="left")
+fusion  = pd.merge(impr_clic, achats, on="cookie_id",how="left")
 fusion
 df = pd.DataFrame(fusion)
 
