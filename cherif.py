@@ -9,11 +9,10 @@ impressions = pd.read_csv('impressions.csv')
 clics = pd.read_csv('clics.csv')
 achats = pd.read_csv('achats.csv')
 
-merged_data = pd.merge(clics, impressions, on="cookie_id", how="right")
-merged_data = pd.merge(merged_data, achats, on="cookie_id",how="left")
-merged_dat = merged_data.fillna("-")
-merged_data = merged_dat.replace("-",pd.NA)
-fusion = pd.DataFrame(merged_data)
+impr_clic = pd.merge(impressions,clics, on ='cookie_id')
+fusion = pd.merge(impr_clic, achats, on ='cookie_id')
+fusion
+df = pd.DataFrame(fusion)
 
 st.title("Dashboard avec Streamlit et Plotly")
 st.subheader("Données fusionnées")
@@ -37,14 +36,14 @@ with col2:
 
 # Entonnoir
     # Conversion des variables en date
-    fusion['timestamp'] = pd.to_datetime(fusion['timestamp'], unit='s')
-    fusion['timestamp_x'] = pd.to_datetime(fusion['timestamp_x'], unit='s')
-    fusion['timestamp_y'] = pd.to_datetime(fusion['timestamp_y'], unit='s')
+    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s')
+    df['timestamp_x'] = pd.to_datetime(df['timestamp_x'], unit='s')
+    df['timestamp_y'] = pd.to_datetime(df['timestamp_y'], unit='s')
 
     # Calcul des statistiques
-    nb_impressions = fusion['timestamp'].count()
-    nb_clics = fusion['timestamp_x'].count()
-    nb_achats = fusion['timestamp_y'].count()
+    nb_impressions = df['timestamp'].count()
+    nb_clics = df['timestamp_x'].count()
+    nb_achats = df['timestamp_y'].count()
 
     # Création du diagramme en entonnoir
 
