@@ -4,7 +4,7 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.graph_objects as go
-
+h1.title("Bienvenue dans DMWM)
 # Charger les données depuis les fichiers
 
 impressions = pd.read_csv('impressions.csv')
