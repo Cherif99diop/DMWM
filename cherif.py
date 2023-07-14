@@ -35,4 +35,4 @@ with col2:
     st.plotly_chart(fig1)
 
 fig = go.Figure(data=fusion.Pie(labels=data['Sexe'], values=data['dept']))
-    st.plotly_chart(fig)
+st.plotly_chart(fig)
