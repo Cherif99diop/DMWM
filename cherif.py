@@ -11,7 +11,8 @@ achats = pd.read_csv('achats.csv')
 
 merged_data = pd.merge(clics, impressions, on="cookie_id", how="right")
 merged_data = pd.merge(merged_data, achats, on="cookie_id",how="left")
-merged_data = merged_data.fillna("-")
+merged_dat = merged_data.fillna("-")
+merged_data = merged_dat.replace("-",pd.NA)
 df = pd.DataFrame(merged_data)
 
 st.title("Dashboard avec Streamlit et Plotly")
