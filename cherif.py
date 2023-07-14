@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.graph_objects as go
 st.markdown("# Bienvenue dans DMWM")
-st.markdown("Cette application est développé par Cheikh Ahmed Tidiane Chérif DIOP")
+st.markdown("Cette application est développée par Cheikh Ahmed Tidiane Chérif DIOP")
 # Charger les données depuis les fichiers
 
 impressions = pd.read_csv('impressions.csv')
