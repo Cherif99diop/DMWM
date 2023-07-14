@@ -9,9 +9,6 @@ import plotly.graph_objects as go
 st.title("Bienvenue sur l'application DMWM !")
 st.write("Je vous souhaite bon visionnage!")
 
-data = None
-url_api = "http://127.0.0.1:8000/CHEIKH_DMWM/data"
-
 
 # Fonction pour appeler l'API et obtenir les données
 impressions = pd.read_csv('impressions.csv')
@@ -23,18 +20,13 @@ fusion = pd.merge(impr_clic, achats, on ='cookie_id')
 fusion
 
 # Afficher le bouton dans le dashboard
-if st.button('Charger  les données'):
+st.button('Charger  les données'):
     # Appeler la fonction pour obtenir les données de l'API
     data = st.write(fusion)
+    df = pd.DataFrame(data)
 
 # Afficher les données dans le dashboard
-if data is not None:
-    st.dataframe(data)
 
-if data is not None:
-        df = pd.DataFrame(data)
-        # Utilisation de data pour créer un DataFrame df
-        df=df.replace("-",pd.NA)
     # Calcul du chiffre d'affaires
         chiffre_affaires = df['price'].sum()
         st.write(f"<span style='color:red; font-size:40px;'>Chiffre d'affaires : {chiffre_affaires} € </span>", unsafe_allow_html=True)
